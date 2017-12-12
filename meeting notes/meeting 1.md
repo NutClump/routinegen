@@ -1,4 +1,4 @@
-## Talking points: 
+﻿## Talking points: 
 
   - Explain what we are trying to make
   - Decide on market restrictions
@@ -27,7 +27,7 @@
     - Think about essential questions which will have to be answered in an FAQ (including nutrition/IIFYM)
     - Write ups on every attribute and what to expect when it is trained
     - How an athlete’s level of experience affects the routine being generated
-  ### Tim:
+  ### Travis:
   
     - Figure out hosting of website based on requirements (will the page be static? will there be back-end?)
     - Figure out ssl encryption and HTTPS
