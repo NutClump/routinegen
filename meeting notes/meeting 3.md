@@ -11,6 +11,7 @@
   - Beginner testing week will be extra sheet in excel deliverable
   - No need to do much option selection on webpage if possible to do in excel deliverable. All exercise selection and number inputs will be done by user on the excel deliverable
   - FAQ section will be very simple, short, informative. Eg Creatine? Helps with x. Test booster? Unhelpful. Etc
+  - Axing advanced entirely
 
   
 ## Tasks assigned:
@@ -28,7 +29,7 @@
   ### Dawit:
   
     - Write FAQ section
-    - Figure out methods of determining proficiency depending on attribute
+    - Write-ups for every proficiency level of every attribute, add to text resources
     - Write routine for every combination of attribute and proficiency, complete with testing weeks if applicable as well as drop down exercise selection and weight population depending on maxes
     - Think about some way to include cursory dietary information (maybe in FAQ)
 
