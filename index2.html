@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+      .select-wrapper {
+        display: inline-block;
+      }
+    </style>
+  </head>
+
+  <body>
+  	<nav>
+	    <div class="nav-wrapper">
+	    	<div class="container">
+		      <a href="#" class="brand-logo">RoutineGen</a>
+		      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		        <li><a href="#">FAQ</a></li>
+		      </ul>
+		    </div>
+	    </div>
+    </nav>
+
+    <div class="sec1 section lime accent-2" style="height: 50vh">
+      <div class="container">
+        <div class="row center">
+          <br><br><br>
+          <h3><strong>RoutineGen</strong></h3>
+          <br><br>
+          <i class="large material-icons" id="down-button" style="cursor: pointer;">expand_more</i>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec2 section">
+        <div class="container">
+          <div class="row center">
+            <p class="flow-text">My goal in lifting, is to improve my &ensp;
+              <select id="category-s" onchange="onCategoryChange(this.value)">
+                <option value=""  disabled selected></option>
+                <option value="1">Looks</option>
+                <option value="2">Performance</option>
+              </select>
+            </p>
+            <p class="flow-text">I want to focus on my &ensp;
+              <span id="dyn-span">
+                
+              </span>
+            </p>
+            <p class="flow-text">My proficiency as a lifter, is &ensp;
+              <select id="proficiency-s" onchange="onProficiencyChange(this.value)">
+                <option value=""  disabled selected></option>
+                <option value="1">Beginner</option>
+                <option value="2">Intermediate</option>
+              </select>
+            </p>
+            
+            <a class="waves-effect waves-light btn" id="generate-btn">Generate Routine!</a>
+            <div id="dyn-results">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <footer class="page-footer">
+    	
+    </footer>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script>
+      const path_map = {
+    		"LooksUpper BodyBeginner": "1",
+    		"LooksUpper Body,Lower BodyBeginner": "2",
+    	};
+      var category = null;
+      var proficiency = null;
+      var attr = [];
+      function onCategoryChange(val) {
+        var options = '';
+        if (val == 2) {
+          options = `<option value="1">Power</option>
+              <option value="2">Strength</option>
+              <option value="3">Bodyweight</option>
+              <option value="4">Endurance</option>`;
+        } else {
+          options = `<option value="1">Upper Body</option>
+              <option value="2">Lower Body</option>
+              <option value="3">Balanced Full Body</option>`;
+        }
+        $('#dyn-span').html(`<select id="attribute-s" multiple onChange="onAttrChange(this.value)">
+            <option value="" disabled selected></option>${options}</select>`);
+        $('#attribute-s').material_select();
+        category = val;
+      }
+      function onAttrChange(val) {
+        
+      }
+      function onProficiencyChange(val) {
+        proficiency = val;
+      }
+      $(document).ready(function() {
+        $("#down-button").click(function(){
+  				$('html,body').animate({
+		        scrollTop: $(".sec2").offset().top},
+		      'slow');
+  			});
+
+        $('#dyn-span').html(`<select disabled></select>`);
+        $('select').material_select();
+
+        $("#generate-btn").click(function(e){
+  				attr = $('#attribute-s').val();
+          console.log(category);
+          console.log(proficiency);
+          if (attr.length == 0 || category == null || proficiency == null) {
+		      	alert('missing a field!');
+		      } else {
+		      	//download
+		      	const str = "" + category + attr.toString() + proficiency;
+            e.preventDefault();
+            if (path_map[str] == undefined) {
+            	alert('your personalized routine is not out yet. Downloading default instead');
+            	window.location.href = `routines/routine1.xlsx`
+            } else {
+            	window.location.href = `routines/routine${path_map[str]}.xlsx`
+            }
+		      }
+          $("#dyn-results").html(`<p>category: ${category}</p>
+		      	<p>attr: ${attr.toString()}</p>
+		      	<p>proficiency: ${proficiency}</p>`);
+        });
+      });
+      
+
+            
+    </script>
+  </body>
+</html>

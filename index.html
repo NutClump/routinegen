@@ -63,14 +63,11 @@
 	    		<div class="col m12">
 	      		<h5>What is your proficiency level?</h5>
 	      	</div>
-	    		<div class="col m4">
+	    		<div class="col m6">
 	    			<a class="waves-effect waves-light btn" id="beginner-btn">Beginner</a>
 	    		</div>
-	    		<div class="col m4">
+	    		<div class="col m6">
 	    			<a class="waves-effect waves-light btn" id="intermediate-btn">Intermediate</a>
-	    		</div>
-	    		<div class="col m4">
-	    			<a class="waves-effect waves-light btn" id="advanced-btn">Advanced</a>
 	    		</div>
 	    	</div>
 	    </div>
@@ -154,7 +151,7 @@
 		        scrollTop: $(".sec3").offset().top},
 		      'slow');
   			});
-  			$("#beginner-btn,#intermediate-btn,#advanced-btn").click(function(){
+  			$("#beginner-btn,#intermediate-btn").click(function(){
   				$('html,body').animate({
 		        scrollTop: $(".sec4").offset().top},
 		      'slow');
@@ -179,20 +176,12 @@
   			$("#beginner-btn").click(function(){
 		      $("#beginner-btn").addClass("disabled");
 		      $("#intermediate-btn").removeClass("disabled");
-		      $("#advanced-btn").removeClass("disabled");
 		      proficiency = "Beginner";
   			});
   			$("#intermediate-btn").click(function(){
 		      $("#beginner-btn").removeClass("disabled");
 		      $("#intermediate-btn").addClass("disabled");
-		      $("#advanced-btn").removeClass("disabled");
 		      proficiency = "Intermediate";
-  			});
-  			$("#advanced-btn").click(function(){
-		      $("#beginner-btn").removeClass("disabled");
-		      $("#intermediate-btn").removeClass("disabled");
-		      $("#advanced-btn").addClass("disabled");
-		      proficiency = "Advanced";
   			});
 
   			$("#generate-btn").click(function(e){
