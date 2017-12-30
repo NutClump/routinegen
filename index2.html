@@ -15,15 +15,15 @@
   	<nav>
 	    <div class="nav-wrapper">
 	    	<div class="container">
-		      <a href="#" class="brand-logo">RoutineGen</a>
+		      <a href="index2.html" class="brand-logo">RoutineGen</a>
 		      <ul id="nav-mobile" class="right hide-on-med-and-down">
-		        <li><a href="#">FAQ</a></li>
+		        <li><a href="faq.html">FAQ</a></li>
 		      </ul>
 		    </div>
 	    </div>
     </nav>
 
-    <div class="sec1 section lime accent-2" style="height: 50vh">
+    <div class="sec1 section lime accent-2" style="min-height: 40vh">
       <div class="container">
         <div class="row center">
           <br><br><br>
@@ -34,14 +34,14 @@
       </div>
     </div>
 
-    <div class="sec2 section">
+    <div class="sec2 section" style="min-height: 50vh">
         <div class="container">
           <div class="row center">
             <p class="flow-text">My goal in lifting, is to improve my &ensp;
               <select id="category-s" onchange="onCategoryChange(this.value)">
                 <option value=""  disabled selected></option>
-                <option value="1">Looks</option>
-                <option value="2">Performance</option>
+                <option value="L">Looks</option>
+                <option value="P">Performance</option>
               </select>
             </p>
             <p class="flow-text">I want to focus on my &ensp;
@@ -52,8 +52,8 @@
             <p class="flow-text">My proficiency as a lifter, is &ensp;
               <select id="proficiency-s" onchange="onProficiencyChange(this.value)">
                 <option value=""  disabled selected></option>
-                <option value="1">Beginner</option>
-                <option value="2">Intermediate</option>
+                <option value="B">Beginner</option>
+                <option value="I">Intermediate</option>
               </select>
             </p>
             
@@ -73,15 +73,57 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script>
       const path_map = {
-    		"LooksUpper BodyBeginner": "1",
-    		"LooksUpper Body,Lower BodyBeginner": "2",
+    		"LB1": "1",
+        "LB2": "2",
+        "LB3": "3",
+        "LB12": "4",
+        "LB13": "5",
+        "LB23": "6",
+        "LB123": "7",
+        "LI1": "8",
+        "LI2": "9",
+        "LI3": "10",
+        "LI12": "11",
+        "LI13": "12",
+        "LI23": "13",
+        "LI123": "14",
+        "PB1": "15",
+        "PB2": "16",
+        "PB3": "17",
+        "PB4": "18",
+        "PB12": "19",
+        "PB13": "20",
+        "PB14": "21",
+        "PB23": "22",
+        "PB24": "23",
+        "PB34": "24",
+        "PB123": "25",
+        "PB124": "26",
+        "PB134": "27",
+        "PB234": "28",
+        "PB1234": "29",
+        "PI1": "30",
+        "PI2": "31",
+        "PI3": "32",
+        "PI4": "33",
+        "PI12": "34",
+        "PI13": "35",
+        "PI14": "36",
+        "PI23": "37",
+        "PI24": "38",
+        "PI34": "39",
+        "PI123": "40",
+        "PI124": "41",
+        "PI134": "42",
+        "PI234": "43",
+        "PI1234": "44",
     	};
       var category = null;
       var proficiency = null;
       var attr = [];
       function onCategoryChange(val) {
         var options = '';
-        if (val == 2) {
+        if (val == 'P') {
           options = `<option value="1">Power</option>
               <option value="2">Strength</option>
               <option value="3">Bodyweight</option>
@@ -91,13 +133,10 @@
               <option value="2">Lower Body</option>
               <option value="3">Balanced Full Body</option>`;
         }
-        $('#dyn-span').html(`<select id="attribute-s" multiple onChange="onAttrChange(this.value)">
+        $('#dyn-span').html(`<select id="attribute-s" multiple>
             <option value="" disabled selected></option>${options}</select>`);
         $('#attribute-s').material_select();
         category = val;
-      }
-      function onAttrChange(val) {
-        
       }
       function onProficiencyChange(val) {
         proficiency = val;
@@ -114,13 +153,11 @@
 
         $("#generate-btn").click(function(e){
   				attr = $('#attribute-s').val();
-          console.log(category);
-          console.log(proficiency);
-          if (attr.length == 0 || category == null || proficiency == null) {
+          if (attr == undefined || attr.length == 0 || category == null || proficiency == null) {
 		      	alert('missing a field!');
 		      } else {
 		      	//download
-		      	const str = "" + category + attr.toString() + proficiency;
+		      	const str = "" + category + proficiency + attr.toString().replace(/,/g, '');
             e.preventDefault();
             if (path_map[str] == undefined) {
             	alert('your personalized routine is not out yet. Downloading default instead');
@@ -128,15 +165,12 @@
             } else {
             	window.location.href = `routines/routine${path_map[str]}.xlsx`
             }
-		      }
-          $("#dyn-results").html(`<p>category: ${category}</p>
-		      	<p>attr: ${attr.toString()}</p>
+            $("#dyn-results").html(`<p>category: ${category}</p>
+		      	<p>attr: ${attr.toString().replace(/,/g, '')}</p>
 		      	<p>proficiency: ${proficiency}</p>`);
+		      }
         });
       });
-      
-
-            
     </script>
   </body>
 </html>

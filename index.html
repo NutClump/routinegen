@@ -10,41 +10,41 @@
   	<nav>
 	    <div class="nav-wrapper">
 	    	<div class="container">
-		      <a href="#" class="brand-logo">RoutineGen</a>
+		      <a href="index.html" class="brand-logo">RoutineGen</a>
 		      <ul id="nav-mobile" class="right hide-on-med-and-down">
-		        <li><a href="#">FAQ</a></li>
+		        <li><a href="faq.html">FAQ</a></li>
 		      </ul>
 		    </div>
 	    </div>
 	  </nav>
 
-	  <div id="index-banner" class="parallax-container" style="height: 100vh">
+	  <div id="index-banner" class="parallax-container" style="min-height: 100vh">
 	    <div class="section no-pad-bot">
 	      <div class="container">
 	      	<br><br><br><br>
 	        <div class="row center">
-	          <a href="#" id="start-btn" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
+	          <a id="start-btn" class="btn-large waves-effect waves-light teal lighten-1">Get Started</a>
 	        </div>
 	      </div>
 	    </div>
 	  </div>
 
-	  <div class="sec1 section teal lighten-5" style="height: 60vh">
+	  <div class="sec1 section teal lighten-5" style="min-height: 60vh">
     	<div class="container">
 	      <div class="row center">
 	      	<div class="col m12">
 	      		<h5>Do you care more about looks or performance?</h5>
 	      	</div>
-	        <div class="col m6">
+	        <div class="col m6 s12">
 	            <a class="waves-effect waves-light btn" id="looks-btn">Looks</a>
 	        </div>
-	        <div class="col m6">
+	        <div class="col m6 s12">
 	          <a class="waves-effect waves-light btn" id="perf-btn">Performance</a>
 	        </div>
 	      </div>
 	    </div>
 	  </div>
-	  <div class="sec2 section" style="height: 60vh">
+	  <div class="sec2 section" style="min-height: 60vh">
 	  	<div class="container">
 	      <div class="row center">
 	      	<div class="col m12">
@@ -57,23 +57,23 @@
 	      </div>
 	    </div>
 	  </div>
-    <div class="sec3 section teal lighten-5" style="height: 60vh">
+    <div class="sec3 section teal lighten-5" style="min-height: 60vh">
     	<div class="container">
 	    	<div class="row center">
 	    		<div class="col m12">
 	      		<h5>What is your proficiency level?</h5>
 	      	</div>
-	    		<div class="col m6">
+	    		<div class="col m6 s12">
 	    			<a class="waves-effect waves-light btn" id="beginner-btn">Beginner</a>
 	    		</div>
-	    		<div class="col m6">
+	    		<div class="col m6 s12">
 	    			<a class="waves-effect waves-light btn" id="intermediate-btn">Intermediate</a>
 	    		</div>
 	    	</div>
 	    </div>
     </div>
 
-    <div class="sec4 section" style="height: 60vh">
+    <div class="sec4 section" style="min-height: 60vh">
     	<div class="container">
 	    	<div class="row center">
 	    		<div class="col m12">
@@ -95,38 +95,80 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script>
     	const path_map = {
-    		"LooksUpper BodyBeginner": "1",
-    		"LooksUpper Body,Lower BodyBeginner": "2",
-    	}
+    		"LB1": "1",
+        "LB2": "2",
+        "LB3": "3",
+        "LB12": "4",
+        "LB13": "5",
+        "LB23": "6",
+        "LB123": "7",
+        "LI1": "8",
+        "LI2": "9",
+        "LI3": "10",
+        "LI12": "11",
+        "LI13": "12",
+        "LI23": "13",
+        "LI123": "14",
+        "PB1": "15",
+        "PB2": "16",
+        "PB3": "17",
+        "PB4": "18",
+        "PB12": "19",
+        "PB13": "20",
+        "PB14": "21",
+        "PB23": "22",
+        "PB24": "23",
+        "PB34": "24",
+        "PB123": "25",
+        "PB124": "26",
+        "PB134": "27",
+        "PB234": "28",
+        "PB1234": "29",
+        "PI1": "30",
+        "PI2": "31",
+        "PI3": "32",
+        "PI4": "33",
+        "PI12": "34",
+        "PI13": "35",
+        "PI14": "36",
+        "PI23": "37",
+        "PI24": "38",
+        "PI34": "39",
+        "PI123": "40",
+        "PI124": "41",
+        "PI134": "42",
+        "PI234": "43",
+        "PI1234": "44",
+    	};
     	const looks_form = `<form action="#" id="looks-form">
 					    <p>
-					      <input type="checkbox" id="looks-c-1" name="looks-c" />
+					      <input type="checkbox" id="looks-c-1" name="looks-c" value="1" />
 					      <label for="looks-c-1">Upper Body</label>
 					    </p>
 					    <p>
-					      <input type="checkbox" id="looks-c-2" name="looks-c" />
+					      <input type="checkbox" id="looks-c-2" name="looks-c" value="2" />
 					      <label for="looks-c-2">Lower Body</label>
 					    </p>
 					    <p>
-					      <input type="checkbox" id="looks-c-3" name="looks-c" />
+					      <input type="checkbox" id="looks-c-3" name="looks-c" value="3" />
 					      <label for="looks-c-3">Balanced Full Body</label>
 					    </p>
 					  </form>`
     	const perf_form = `<form action="#" id="perf-form">
 					    <p>
-					      <input type="checkbox" id="perf-c-1" name="perf-c" />
+					      <input type="checkbox" id="perf-c-1" name="perf-c" value="1" />
 					      <label for="perf-c-1">Power</label>
 					    </p>
 					    <p>
-					      <input type="checkbox" id="perf-c-2" name="perf-c" />
+					      <input type="checkbox" id="perf-c-2" name="perf-c" value="2" />
 					      <label for="perf-c-2">Strength</label>
 					    </p>
 					    <p>
-					      <input type="checkbox" id="perf-c-3" name="perf-c" />
+					      <input type="checkbox" id="perf-c-3" name="perf-c" value="3" />
 					      <label for="perf-c-3">Bodyweight</label>
 					    </p>
 					    <p>
-					      <input type="checkbox" id="perf-c-4" name="perf-c" />
+					      <input type="checkbox" id="perf-c-4" name="perf-c" value="4" />
 					      <label for="perf-c-4">Endurance</label>
 					    </p>
 					  </form>`
@@ -162,37 +204,37 @@
 		      $("#dyn-form").html(looks_form);
 		      $("#looks-btn").addClass("disabled");
 		      $("#perf-btn").removeClass("disabled");
-		      category = "Looks";
+		      category = "L";
 		      attr = [];
   			});
   			$("#perf-btn").click(function(){
 		      $("#dyn-form").html(perf_form);
 		      $("#perf-btn").addClass("disabled");
 		      $("#looks-btn").removeClass("disabled");
-		      category = "Performance";
+		      category = "P";
 		      attr = [];
   			});
 
   			$("#beginner-btn").click(function(){
 		      $("#beginner-btn").addClass("disabled");
 		      $("#intermediate-btn").removeClass("disabled");
-		      proficiency = "Beginner";
+		      proficiency = "B";
   			});
   			$("#intermediate-btn").click(function(){
 		      $("#beginner-btn").removeClass("disabled");
 		      $("#intermediate-btn").addClass("disabled");
-		      proficiency = "Intermediate";
+		      proficiency = "I";
   			});
 
   			$("#generate-btn").click(function(e){
   				$(":checkbox:checked").each(function(){
-  					attr.push($("label[for='"+$(this).attr('id')+"']").text());
+  					attr.push(this.value);
   				});
 		      if (attr.length == 0 || category == null || proficiency == null) {
 		      	alert('missing a field!');
 		      } else {
 		      	//download
-		      	const str = "" + category + attr.toString() + proficiency;
+		      	const str = "" + category + proficiency + attr.toString().replace(/,/g, '');
             e.preventDefault();
             if (path_map[str] == undefined) {
             	alert('your personalized routine is not out yet. Downloading default instead');
@@ -200,10 +242,10 @@
             } else {
             	window.location.href = `routines/routine${path_map[str]}.xlsx`
             }
-		      }
-		      $("#dyn-results").html(`<p>category: ${category}</p>
+						$("#dyn-results").html(`<p>category: ${category}</p>
 		      	<p>attr: ${attr.toString()}</p>
 		      	<p>proficiency: ${proficiency}</p>`);
+		      }
   			});
 
 			});
