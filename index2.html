@@ -76,47 +76,17 @@
     		"LB1": "1",
         "LB2": "2",
         "LB3": "3",
-        "LB12": "4",
-        "LB13": "5",
-        "LB23": "6",
-        "LB123": "7",
-        "LI1": "8",
-        "LI2": "9",
-        "LI3": "10",
-        "LI12": "11",
-        "LI13": "12",
-        "LI23": "13",
-        "LI123": "14",
-        "PB1": "15",
-        "PB2": "16",
-        "PB3": "17",
-        "PB4": "18",
-        "PB12": "19",
-        "PB13": "20",
-        "PB14": "21",
-        "PB23": "22",
-        "PB24": "23",
-        "PB34": "24",
-        "PB123": "25",
-        "PB124": "26",
-        "PB134": "27",
-        "PB234": "28",
-        "PB1234": "29",
-        "PI1": "30",
-        "PI2": "31",
-        "PI3": "32",
-        "PI4": "33",
-        "PI12": "34",
-        "PI13": "35",
-        "PI14": "36",
-        "PI23": "37",
-        "PI24": "38",
-        "PI34": "39",
-        "PI123": "40",
-        "PI124": "41",
-        "PI134": "42",
-        "PI234": "43",
-        "PI1234": "44",
+        "LI1": "4",
+        "LI2": "5",
+        "LI3": "6",
+        "PB1": "7",
+        "PB2": "8",
+        "PB3": "9",
+        "PB4": "10",
+        "PI1": "11",
+        "PI2": "12",
+        "PI3": "13",
+        "PI4": "14",
     	};
       var category = null;
       var proficiency = null;
@@ -133,7 +103,7 @@
               <option value="2">Lower Body</option>
               <option value="3">Balanced Full Body</option>`;
         }
-        $('#dyn-span').html(`<select id="attribute-s" multiple>
+        $('#dyn-span').html(`<select id="attribute-s">
             <option value="" disabled selected></option>${options}</select>`);
         $('#attribute-s').material_select();
         category = val;
@@ -157,7 +127,7 @@
 		      	alert('missing a field!');
 		      } else {
 		      	//download
-		      	const str = "" + category + proficiency + attr.toString().replace(/,/g, '');
+		      	const str = "" + category + proficiency + attr.toString();
             e.preventDefault();
             if (path_map[str] == undefined) {
             	alert('your personalized routine is not out yet. Downloading default instead');
@@ -166,7 +136,7 @@
             	window.location.href = `routines/routine${path_map[str]}.xlsx`
             }
             $("#dyn-results").html(`<p>category: ${category}</p>
-		      	<p>attr: ${attr.toString().replace(/,/g, '')}</p>
+		      	<p>attr: ${attr.toString()}</p>
 		      	<p>proficiency: ${proficiency}</p>`);
 		      }
         });

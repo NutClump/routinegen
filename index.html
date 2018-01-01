@@ -48,7 +48,7 @@
 	  	<div class="container">
 	      <div class="row center">
 	      	<div class="col m12">
-	      		<h5>What attributes? Check all that apply.</h5>
+	      		<h5>I want to focus on my</h5>
 	      	</div>
 	        <div class="col m12" id="dyn-form">
 	        	
@@ -98,82 +98,52 @@
     		"LB1": "1",
         "LB2": "2",
         "LB3": "3",
-        "LB12": "4",
-        "LB13": "5",
-        "LB23": "6",
-        "LB123": "7",
-        "LI1": "8",
-        "LI2": "9",
-        "LI3": "10",
-        "LI12": "11",
-        "LI13": "12",
-        "LI23": "13",
-        "LI123": "14",
-        "PB1": "15",
-        "PB2": "16",
-        "PB3": "17",
-        "PB4": "18",
-        "PB12": "19",
-        "PB13": "20",
-        "PB14": "21",
-        "PB23": "22",
-        "PB24": "23",
-        "PB34": "24",
-        "PB123": "25",
-        "PB124": "26",
-        "PB134": "27",
-        "PB234": "28",
-        "PB1234": "29",
-        "PI1": "30",
-        "PI2": "31",
-        "PI3": "32",
-        "PI4": "33",
-        "PI12": "34",
-        "PI13": "35",
-        "PI14": "36",
-        "PI23": "37",
-        "PI24": "38",
-        "PI34": "39",
-        "PI123": "40",
-        "PI124": "41",
-        "PI134": "42",
-        "PI234": "43",
-        "PI1234": "44",
+        "LI1": "4",
+        "LI2": "5",
+        "LI3": "6",
+        "PB1": "7",
+        "PB2": "8",
+        "PB3": "9",
+        "PB4": "10",
+        "PI1": "11",
+        "PI2": "12",
+        "PI3": "13",
+        "PI4": "14",
     	};
     	const looks_form = `<form action="#" id="looks-form">
 					    <p>
-					      <input type="checkbox" id="looks-c-1" name="looks-c" value="1" />
+					      <input type="radio" id="looks-c-1" name="looks-c" value="1" />
 					      <label for="looks-c-1">Upper Body</label>
 					    </p>
 					    <p>
-					      <input type="checkbox" id="looks-c-2" name="looks-c" value="2" />
+					      <input type="radio" id="looks-c-2" name="looks-c" value="2" />
 					      <label for="looks-c-2">Lower Body</label>
 					    </p>
 					    <p>
-					      <input type="checkbox" id="looks-c-3" name="looks-c" value="3" />
+					      <input type="radio" id="looks-c-3" name="looks-c" value="3" />
 					      <label for="looks-c-3">Balanced Full Body</label>
 					    </p>
 					  </form>`
     	const perf_form = `<form action="#" id="perf-form">
 					    <p>
-					      <input type="checkbox" id="perf-c-1" name="perf-c" value="1" />
+					      <input type="radio" id="perf-c-1" name="perf-c" value="1" />
 					      <label for="perf-c-1">Power</label>
 					    </p>
 					    <p>
-					      <input type="checkbox" id="perf-c-2" name="perf-c" value="2" />
+					      <input type="radio" id="perf-c-2" name="perf-c" value="2" />
 					      <label for="perf-c-2">Strength</label>
 					    </p>
 					    <p>
-					      <input type="checkbox" id="perf-c-3" name="perf-c" value="3" />
+					      <input type="radio" id="perf-c-3" name="perf-c" value="3" />
 					      <label for="perf-c-3">Bodyweight</label>
 					    </p>
 					    <p>
-					      <input type="checkbox" id="perf-c-4" name="perf-c" value="4" />
+					      <input type="radio" id="perf-c-4" name="perf-c" value="4" />
 					      <label for="perf-c-4">Endurance</label>
 					    </p>
 					  </form>`
 			var category = null;
-			var attr = [];
+			var attr = null;
 			var proficiency = null;
     	$(document).ready(function() {
 
@@ -205,14 +175,14 @@
 		      $("#looks-btn").addClass("disabled");
 		      $("#perf-btn").removeClass("disabled");
 		      category = "L";
-		      attr = [];
+		      attr = null;
   			});
   			$("#perf-btn").click(function(){
 		      $("#dyn-form").html(perf_form);
 		      $("#perf-btn").addClass("disabled");
 		      $("#looks-btn").removeClass("disabled");
 		      category = "P";
-		      attr = [];
+		      attr = null;
   			});
 
   			$("#beginner-btn").click(function(){
@@ -227,14 +197,14 @@
   			});
 
   			$("#generate-btn").click(function(e){
-  				$(":checkbox:checked").each(function(){
-  					attr.push(this.value);
+  				$(":radio:checked").each(function(){
+  					attr = this.value;
   				});
-		      if (attr.length == 0 || category == null || proficiency == null) {
+		      if (attr == null || category == null || proficiency == null) {
 		      	alert('missing a field!');
 		      } else {
 		      	//download
-		      	const str = "" + category + proficiency + attr.toString().replace(/,/g, '');
+		      	const str = "" + category + proficiency + attr;
             e.preventDefault();
             if (path_map[str] == undefined) {
             	alert('your personalized routine is not out yet. Downloading default instead');
@@ -243,7 +213,7 @@
             	window.location.href = `routines/routine${path_map[str]}.xlsx`
             }
 						$("#dyn-results").html(`<p>category: ${category}</p>
-		      	<p>attr: ${attr.toString()}</p>
+		      	<p>attr: ${attr}</p>
 		      	<p>proficiency: ${proficiency}</p>`);
 		      }
   			});
