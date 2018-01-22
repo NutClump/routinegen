@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <style>
+      .select-wrapper {
+        display: inline-block;
+      }
+      body {
+        background-image: url("design%20resources/logo/black%20pattern.png");
+        background-repeat: repeat;
+        font-family: 'Roboto Slab';
+      }
+      .btn-text {
+        color: #000;
+        font-weight: 100;
+      }
+      .p-text {
+        color: #fff;
+        font-weight: 100;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col m3">
+            <img src="design%20resources/logo/logo-white.svg" style="width: 35vw; height: auto">
+          </div>
+        </div>
+        <div class="row center">
+          <p class="flow-text p-text">I'm mostly concerned with &ensp;
+            <select id="category-s" onchange="onCategoryChange(this.value)">
+              <option value=""  disabled selected></option>
+              <option value="L">Looks</option>
+              <option value="P">Performance</option>
+            </select>
+            &ensp; these days.
+            For the next 12 weeks I want to focus on my improving my &ensp;
+            <span id="dyn-span">
+              
+            </span>
+            .
+            In this regard I would consider myself a &ensp;
+            <select id="proficiency-s" onchange="onProficiencyChange(this.value)">
+              <option value=""  disabled selected></option>
+              <option value="B">Beginner</option>
+              <option value="I">Intermediate</option>
+            </select>.
+          </p>
+          
+          <a class="waves-effect waves-light grey lighten-5 btn" id="generate-btn">
+            <span class="btn-text">Generate Routine!</span>
+            </a>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script>
+      const path_map = {
+    		"LB1": "1",
+        "LB2": "2",
+        "LB3": "3",
+        "LI1": "4",
+        "LI2": "5",
+        "LI3": "6",
+        "PB1": "7",
+        "PB2": "8",
+        "PB3": "9",
+        "PB4": "10",
+        "PI1": "11",
+        "PI2": "12",
+        "PI3": "13",
+        "PI4": "14",
+    	};
+      var category = null;
+      var proficiency = null;
+      var attr = [];
+      var catChanged = false;
+      var attChanged = false;
+      var profChanged = false;
+      
+      function onCategoryChange(val) {
+        alert('1')
+        var options = '';
+        if (val == 'P') {
+          options = `<option value="1">Power</option>
+              <option value="2">Strength</option>
+              <option value="3">Bodyweight</option>
+              <option value="4">Endurance</option>`;
+        } else {
+          options = `<option value="1">Upper Body</option>
+              <option value="2">Lower Body</option>
+              <option value="3">Balanced Full Body</option>`;
+        }
+        $('#dyn-span').html(`<select id="attribute-s" onchange="onProficiencyChange(this.value)>
+            <option value="" disabled selected></option>${options}</select>`);
+        $('#attribute-s').material_select();
+        category = val;
+      }
+      function onProficiencyChange(val) {
+        alert('1')
+        proficiency = val;
+      }
+      $(document).ready(function() {
+        $('#dyn-span').html(`<select disabled></select>`);
+        $('select').material_select();
+
+        $('#category-s').on('change', function() {
+          if (catChanged && attChanged && profChanged) alert('hello');
+        });
+        $('#attribute-s').on('change', function() {
+          alert('1')
+          attChanged = true;
+          if (catChanged && attChanged && profChanged) alert('hello');
+        });
+        $('#proficiency-s').on('change', function() {
+          profChanged = true;
+          if (catChanged && attChanged && profChanged) alert('hello');
+        });
+
+        $("#generate-btn").click(function(e){
+  				attr = $('#attribute-s').val();
+          if (attr == undefined || attr.length == 0 || category == null || proficiency == null) {
+		      	alert('missing a field!');
+		      } else {
+		      	//download
+		      	const str = "" + category + proficiency + attr.toString();
+            e.preventDefault();
+            if (path_map[str] == undefined) {
+            	alert('your personalized routine is not out yet. Downloading default instead');
+            	window.location.href = `routines/routine1.xlsx`
+            } else {
+            	window.location.href = `routines/routine${path_map[str]}.xlsx`
+            }
+		      }
+        });
+      });
+    </script>
+  </body>
+</html>
