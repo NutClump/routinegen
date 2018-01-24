@@ -1,0 +1,16 @@
+.select-wrapper {
+  display: inline-block;
+}
+body {
+  background-image: url("design%20resources/logo/black%20pattern.png");
+  background-repeat: repeat;
+  font-family: 'Roboto Slab';
+}
+.btn-text {
+  color: #000;
+  font-weight: 100;
+}
+.p-text {
+  color: #fff;
+  font-weight: 100;
+}

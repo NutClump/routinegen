@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col m3">
+            <img src="design%20resources/logo/logo-white.svg" style="width: 35vw; height: auto">
+          </div>
+        </div>
+        <div class="row center">
+          <p class="flow-text p-text">I'm mostly concerned with &ensp;
+            <select id="category-s" onchange="onCategoryChange(this.value)">
+              <option value=""  disabled selected></option>
+              <option value="L">Looks</option>
+              <option value="P">Performance</option>
+            </select>
+            &ensp; these days.
+            For the next 12 weeks I want to focus on my improving my &ensp;
+            <span id="dyn-span"></span>
+            .
+            In this regard I would consider myself a &ensp;
+            <select id="proficiency-s" onchange="onProficiencyChange(this.value)">
+              <option value=""  disabled selected></option>
+              <option value="B">Beginner</option>
+              <option value="I">Intermediate</option>
+            </select>.
+          </p>
+          <span id="dyn-span2"></span>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script src="script.js"></script>
+  </body>
+</html>
