@@ -14,3 +14,7 @@ body {
   color: #fff;
   font-weight: 100;
 }
+.resize {
+	width: 75vw;
+	height: 75vh;
+}

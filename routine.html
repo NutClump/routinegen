@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="row center">
-          <p class="flow-text p-text">I'm mostly concerned with &ensp;
+          <p class="resize p-text" id="mainText"><span>I'm mostly concerned with &ensp;
             <select id="category-s" onchange="onCategoryChange(this.value)">
               <option value=""  disabled selected></option>
               <option value="L">Looks</option>
@@ -31,7 +31,7 @@
               <option value=""  disabled selected></option>
               <option value="B">Beginner</option>
               <option value="I">Intermediate</option>
-            </select>.
+            </select>. </span>
           </p>
           <span id="dyn-span2"></span>
         </div>
@@ -40,6 +40,14 @@
   </body>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script src="./textfill/source/jquery.textfill.js"></script>
   <script src="script.js"></script>
+  <script>  
+$(function() {
+    $('#mainText').textfill({
+        maxFontPixels: 150
+    });
+});
+  </script>
   </body>
 </html>
