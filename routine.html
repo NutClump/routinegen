@@ -16,6 +16,7 @@
           </div>
         </div>
         <div class="row center">
+          <div class="col s12">
           <p class="resize p-text" id="mainText"><span>I'm mostly concerned with &ensp;
             <select id="category-s" onchange="onCategoryChange(this.value)">
               <option value=""  disabled selected></option>
@@ -35,19 +36,16 @@
           </p>
           <span id="dyn-span2"></span>
         </div>
+        </div>
       </div>
     </div>
   </body>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-  <script src="./textfill/source/jquery.textfill.js"></script>
   <script src="script.js"></script>
-  <script>  
-$(function() {
-    $('#mainText').textfill({
-        maxFontPixels: 150
-    });
-});
+  <script src="fitty.min.js"></script>
+  <script>
+    fitty('#fitted');
   </script>
   </body>
 </html>
